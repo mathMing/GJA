@@ -1,0 +1,29 @@
+# Local data and credentials
+.audit_deps/
+temp_internal/
+**/*_LOCAL.csv
+**/*_LOCAL.csv.gz
+**/*_LOCAL.json
+**/*_LOCAL_ONLY.csv
+**/actions_LOCAL.csv.gz
+**/score_cache_LOCAL.csv.gz
+*.xlsx
+*.xls
+*.dcm
+
+# Generated caches and Python artifacts
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Large or sensitive generated outputs
+results/**/replicate_results.csv
+results/**/reference_grid_diagnostics.csv
+results/**/score_cache*.gz
+results/**/actions*.gz
+results/**/oof_scores.csv
+results/**/synthetic_raw.csv
+results/**/false_negative_audit*.csv
+results/**/patient_review_flags*.csv
+results/**/review_evidence_routes*.csv
+results/**/in_memory_changes*.csv

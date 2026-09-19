@@ -1,0 +1,63 @@
+{
+  "_comment": "Better-1 E0/E1 可复现工程统一配置。路径可用命令行参数覆盖；种子与规模改动会改变可比性，非必要勿动。",
+  "paths": {
+    "clinical_source": "X:/GJA/DATA/clinical/original/cervical_master_aligned.xlsx",
+    "output_dir": "results",
+    "temp_dir": "temp_internal"
+  },
+  "e0": {
+    "sheet_index_0based_header_row": 1,
+    "data_start_row_0based": 2,
+    "n_features_total": 62,
+    "block_key_cols": {
+      "hpv": "C13",
+      "tct": "C14"
+    },
+    "label_col": "C42",
+    "frozen_n": 773,
+    "frozen_positives": 149,
+    "cv": {
+      "n_splits": 5,
+      "shuffle": true,
+      "seeds": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+      "logreg_C": 1.0,
+      "logreg_max_iter": 5000
+    }
+  },
+  "e1": {
+    "dgp": {
+      "A1": -0.35,
+      "A2": -2.15,
+      "C": 2.0,
+      "BA": 1.05,
+      "BB": 0.42,
+      "PREV": 0.1928,
+      "X_visible_coef": 0.7,
+      "X_noise_sd": 1.1,
+      "X_dim": 8
+    },
+    "block_proportions": [0.5188, 0.3105, 0.1462, 0.0246],
+    "block_names": ["完整", "仅缺TCT", "都缺", "仅缺HPV"],
+    "alpha_cov_grid": [0.05, 0.10, 0.15, 0.20, 0.30, 0.40],
+    "alpha_risk_grid": [0.02, 0.05, 0.10, 0.15, 0.20],
+    "repeats": 200,
+    "n_per_repeat": 20000,
+    "seed_base": 10000,
+    "split_ratios": {
+      "train": 0.4,
+      "calibration": 0.3
+    },
+    "min_cal_block_for_conformal": 5,
+    "min_cal_block_for_threshold": 30,
+    "min_test_block_report": 5,
+    "cp_upper_delta": 0.05,
+    "alpha_feasibility": {
+      "seed_base": 50000,
+      "reps": 50,
+      "nb_grid": [40, 80, 160, 320, 640, 1280, 2560],
+      "min_n": 300,
+      "alpha": 0.10,
+      "probe_block": 2
+    }
+  }
+}
