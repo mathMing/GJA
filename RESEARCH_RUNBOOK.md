@@ -1,5 +1,7 @@
 # Better-1 当前研究运行手册
 
+V20训练—校准分配实验已完成：416次新拟合，固定测试病例，对原分配/50%/75%校准比较；src/calibration_allocation_v20.py与src/report_allocation_v20.py；协议reports/v20_calibration_allocation_protocol.md；结果results/calibration_allocation_v20。新校准患者必须移出新训练集，从头拟合；不可复用旧模型的迁入患者预测。报告解释整体数据分配权衡，不声称独立新增数据的因果效应。
+
 V19低风险排序诊断已完成：src/low_risk_ranking_v19.py；协议reports/v19_low_risk_ranking_protocol.md；结果results/low_risk_ranking_v19；报告reports/Better1_v19_低风险排序与校准规模.md。训练OOF评分固定10%/25%/50%分位数，隔离测试仅评价；不认证、不反选阈值。校准规模表为预设风险/服务率下的精确假设分析，不是真实招募建议。已有run.json拒绝覆盖。
 
 V18固定评分服务瓶颈诊断已完成：src/service_bottleneck_v18.py；报告src/report_bottleneck_v18.py；结果results/service_bottleneck_v18；协议reports/v18_service_bottleneck_protocol.md。复用V17评分、无新增拟合；所有有效规则与无效诊断分别标明，测试标签事后规则不可用于部署或调参。假设功效分析的样本量指阈值接纳的校准人数，不是总招募人数。
