@@ -1,5 +1,7 @@
 # Better-1 当前研究运行手册
 
+当前主线已获用户确认：AI风险评分在检查缺失条件下的安全边界与服务率代价。V17影像日期敏感性已完成，832次新拟合，97416行原队列动作与阈值复现V15。运行src/temporal_sensitivity_v17.py（拒绝覆盖）；报告src/report_temporal_v17.py；结果results/temporal_sensitivity_v17；协议reports/v17_temporal_sensitivity_protocol.md。保留外层患者角色，日期排除不等于临床裁定；服务率差G0−G2只在相同队列和评分器内解释，不是相同保证下算法净效应。
+
 V16异常数值缺失化敏感性已完成，624次拟合；结果results/numeric_sensitivity_v16，协议reports/v16_numeric_sensitivity_protocol.md。报告入口src/report_numeric_v16.py；执行入口src/numeric_sensitivity_v16.py拒绝覆盖既有run.json。只改内存副本，CA125原已缺失；实际新增模型输入变化为一例BMI置缺，临床裁定未改变。
 
 V15真实字段删除敏感性已完成，416次新拟合，原配置48708项动作/阈值复现V13。结果results/feature_sensitivity_v15；协议reports/v15_feature_sensitivity_protocol.md。报告入口src/report_feature_sensitivity_v15.py；执行入口src/feature_sensitivity_v15.py拒绝覆盖已有run.json。全部773人保留，删除字段不等于修正来源值或解除临床核实。
