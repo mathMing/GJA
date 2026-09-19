@@ -32,6 +32,7 @@ def main():
  p.add_argument('--stage',choices=STAGES)
  p.add_argument('--mode',choices=['status','run','report','smoke'],default='status')
  p.add_argument('--dry-run',action='store_true',help='Print commands without executing or changing results')
+ p.add_argument('--sync-github',action='store_true',help='After success, push only the approved code/docs allowlist')
  args=p.parse_args()
  if args.mode=='status':
   print(json.dumps({s:state(s) for s in ([args.stage] if args.stage else STAGES)},ensure_ascii=False,indent=2));return
@@ -61,4 +62,6 @@ def main():
   for command in commands:subprocess.run(command,cwd=ROOT,check=True)
  finally:
   lock.unlink()
+ if args.sync_github:
+  subprocess.run(['powershell','-NoProfile','-ExecutionPolicy','Bypass','-File',str(ROOT/'sync_github.ps1'),'-Message',f'Run {args.stage} {args.mode}'],cwd=ROOT,check=True)
 if __name__=='__main__':main()
